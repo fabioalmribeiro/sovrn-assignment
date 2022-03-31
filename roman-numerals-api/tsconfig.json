@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "removeComments": true,
+    "noLib": false,
+    "preserveConstEnums": true,
+    "sourceMap": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "pretty": true,
+    "declaration": true,
+    "outDir": "dist",
+    "rootDir": ".",
+    "esModuleInterop": true
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "./src/**/*.spec.ts",
+    "**/__mocks__/**"
+  ]
+}
