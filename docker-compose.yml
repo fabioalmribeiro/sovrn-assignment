@@ -1,0 +1,29 @@
+services:
+  api:
+    build: ./roman-numerals-api
+    image: api
+    restart: always
+    ports:
+      - "3600:3600"
+    volumes:
+      - ./roman-numerals-api:/api
+      - /api/node_modules
+    depends_on:
+      - mongodb
+    networks:
+      - webappnetwork
+
+  mongodb:
+    image: mongo
+    restart: always
+    container_name: mongodb
+    volumes:
+      - ./roman-numerals-db:/data/db
+    ports:
+      - 27017:27017
+    networks:
+      - webappnetwork
+
+networks:
+  webappnetwork:
+    driver: bridge
