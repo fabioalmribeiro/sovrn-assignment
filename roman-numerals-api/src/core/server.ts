@@ -5,10 +5,12 @@ import helmet from 'helmet';
 import compression from 'compression';
 import cors from 'cors';
 import morgan from 'morgan';
+import mongoose from 'mongoose';
 
 import ErrorObject from '../interfaces/ErrorObject';
 import { createResponse, createError } from '../utils/response';
 import errors from '../utils/errors';
+import Logger from './logger';
 
 class Server {
 
@@ -20,7 +22,16 @@ class Server {
     this.app = express();
     this.routes = [];
 
+    this.initDB();
     this.config();
+  }
+
+  private initDB(): void {
+    mongoose.connect(process.env.APP_DB_PATH);
+
+    mongoose.connection.on('error', error => {
+      Logger.log('error', 'Database error', error);
+    });
   }
 
   private config(): void {
