@@ -10,6 +10,12 @@ const errors = {
     status: 404,
     code: 'NOT_FOUND',
     message: 'Not Found'
+  },
+  // 400
+  not_valid: {
+    status: 400,
+    code: 'NOT_VALID',
+    message: 'Not Valid'
   }
 };
 
