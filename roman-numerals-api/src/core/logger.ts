@@ -38,7 +38,7 @@ class Logger {
     }
   }
 
-  log(level = 'info', message: string, obj: Record<string, unknown>) {
+  log(level = 'info', message: string, obj: Record<string, unknown> = null) {
     this.logger.log(level, message, obj);
   }
 

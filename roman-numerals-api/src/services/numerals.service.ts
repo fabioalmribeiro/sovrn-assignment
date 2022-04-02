@@ -14,11 +14,6 @@ const ROMAN_NUMERAL = {
   'M': 1000
 };
 
-// M{0,3} specifies the thousands section and basically restrains it to between 0 and 4000
-// (CM|CD|D?C{0,3}) is for the hundreds section.
-// (XC|XL|L?X{0,3}) is for the tens place.
-// (IX|IV|V?I{0,3}) is the units section.
-const romanRegEx = new RegExp('^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$');
 class NumeralsService {
 
   async getAllNumeralsList(): Promise<Numeral[]> {
@@ -28,11 +23,6 @@ class NumeralsService {
   }
 
   async getArabicNumeral({ inputValue }: Params): Promise<Numeral> {
-    if (!inputValue.match(romanRegEx)) {
-      // Not a valid roman numeral
-      throw 400;
-    }
-
     const numeral = await NumeralModel.findOne({ roman: inputValue });
 
     if (!numeral) {

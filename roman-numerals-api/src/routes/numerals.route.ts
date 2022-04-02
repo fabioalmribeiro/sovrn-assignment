@@ -22,7 +22,7 @@ class NumeralsRoute {
 
     // Setup routes
     this.router.get('/all', this.getAll.bind(this));
-    this.router.get('/arabic/:inputValue', this.getArabic.bind(this));
+    this.router.get('/arabic/:inputValue', this.verifyRomanNumeral, this.getArabic.bind(this));
     // Add route
     this.app.addRoute('/numerals', this.router);
   }
@@ -44,14 +44,25 @@ class NumeralsRoute {
 
       createResponse(res, 200, 'ARABIC_NUMERAL', null, { inputValue: response.roman, convertedValue: response.arabic });
     } catch (e) {
-      if (e === 400) {
-        Logger.log('error', 'NumeralsRoute ~ getArabic 400', null);
-        next(createError(errors.not_valid));
-      } else {
-        Logger.log('error', 'NumeralsRoute ~ getArabic catch', e);
-        next(createError());
-      }
+      Logger.log('error', 'NumeralsRoute ~ getArabic catch', e);
+      next(createError());
     }
+  }
+
+  verifyRomanNumeral(req: Request, res: Response, next: NextFunction): void {
+    // M{0,3} specifies the thousands section and basically restrains it to between 0 and 4000
+    // (CM|CD|D?C{0,3}) is for the hundreds section.
+    // (XC|XL|L?X{0,3}) is for the tens place.
+    // (IX|IV|V?I{0,3}) is the units section.
+    const romanRegEx = new RegExp('^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$');
+
+    if (!req.params.inputValue.match(romanRegEx)) {
+      Logger.log('error', 'NumeralsRoute ~ verifyRomanNumeral');
+      next(createError(errors.not_valid));
+      return;
+    }
+
+    next();
   }
 }
 
