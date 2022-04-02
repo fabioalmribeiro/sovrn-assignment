@@ -24,6 +24,7 @@ class NumeralsRoute {
     this.router.get('/all', this.getAll.bind(this));
     this.router.get('/arabic/:inputValue', this.verifyRomanNumeral, this.getArabic.bind(this));
     this.router.get('/roman/:inputValue', this.verifyArabicNumeral, this.getRoman.bind(this));
+    this.router.delete('/remove', this.removeAll.bind(this));
     // Add route
     this.app.addRoute('/numerals', this.router);
   }
@@ -57,6 +58,17 @@ class NumeralsRoute {
       createResponse(res, 200, 'ROMAN_NUMERAL', null, { inputValue: response.roman, convertedValue: response.arabic });
     } catch (e) {
       Logger.log('error', 'NumeralsRoute ~ getRoman catch', e);
+      next(createError());
+    }
+  }
+
+  async removeAll(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      await this.numbersService.removeAllNumerals();
+
+      createResponse(res, 200, 'NUMBERS_REMOVED', null, []);
+    } catch (e) {
+      Logger.log('error', 'NumeralsRoute ~ getAll catch', e);
       next(createError());
     }
   }

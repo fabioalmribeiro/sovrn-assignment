@@ -17,9 +17,7 @@ const ROMAN_NUMERAL = {
 class NumeralsService {
 
   async getAllNumeralsList(): Promise<Numeral[]> {
-    const numerals = await NumeralModel.find({});
-
-    return numerals;
+    return await NumeralModel.find({});
   }
 
   async getArabicNumeral({ inputValue }: Params): Promise<Numeral> {
@@ -53,6 +51,10 @@ class NumeralsService {
     }
 
     return numeral;
+  }
+
+  async removeAllNumerals(): Promise<void> {
+    return await NumeralModel.remove();
   }
 
   convertToRoman(arabic: number) {
