@@ -23,6 +23,9 @@ services:
       - 27017:27017
     networks:
       - webappnetwork
+    command:
+      - '--logpath'
+      - '/var/log/mongodb/mongod.log'
 
 networks:
   webappnetwork:

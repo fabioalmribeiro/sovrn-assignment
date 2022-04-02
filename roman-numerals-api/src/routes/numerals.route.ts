@@ -23,6 +23,7 @@ class NumeralsRoute {
     // Setup routes
     this.router.get('/all', this.getAll.bind(this));
     this.router.get('/arabic/:inputValue', this.verifyRomanNumeral, this.getArabic.bind(this));
+    this.router.get('/roman/:inputValue', this.verifyArabicNumeral, this.getRoman.bind(this));
     // Add route
     this.app.addRoute('/numerals', this.router);
   }
@@ -49,6 +50,17 @@ class NumeralsRoute {
     }
   }
 
+  async getRoman(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      const response = await this.numbersService.getRomanNumeral(req.params);
+
+      createResponse(res, 200, 'ROMAN_NUMERAL', null, { inputValue: response.roman, convertedValue: response.arabic });
+    } catch (e) {
+      Logger.log('error', 'NumeralsRoute ~ getRoman catch', e);
+      next(createError());
+    }
+  }
+
   verifyRomanNumeral(req: Request, res: Response, next: NextFunction): void {
     // M{0,3} specifies the thousands section and basically restrains it to between 0 and 4000
     // (CM|CD|D?C{0,3}) is for the hundreds section.
@@ -58,6 +70,16 @@ class NumeralsRoute {
 
     if (!req.params.inputValue.match(romanRegEx)) {
       Logger.log('error', 'NumeralsRoute ~ verifyRomanNumeral');
+      next(createError(errors.not_valid));
+      return;
+    }
+
+    next();
+  }
+
+  verifyArabicNumeral(req: Request, res: Response, next: NextFunction): void {
+    if (_.isNaN(Number(req.params.inputValue))) {
+      Logger.log('error', 'NumeralsRoute ~ verifyNumeral');
       next(createError(errors.not_valid));
       return;
     }

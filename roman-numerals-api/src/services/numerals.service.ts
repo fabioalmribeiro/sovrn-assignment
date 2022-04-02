@@ -5,13 +5,13 @@ import Params from '../interfaces/Params';
 import Numeral from '../interfaces/Numeral';
 
 const ROMAN_NUMERAL = {
-  'I': 1,
-  'V': 5,
-  'X': 10,
-  'L': 50,
-  'C': 100,
+  'M': 1000,
   'D': 500,
-  'M': 1000
+  'C': 100,
+  'L': 50,
+  'X': 10,
+  'V': 5,
+  'I': 1
 };
 
 class NumeralsService {
@@ -26,7 +26,6 @@ class NumeralsService {
     const numeral = await NumeralModel.findOne({ roman: inputValue });
 
     if (!numeral) {
-      // First time value
       const arabic = _.reduce(inputValue, (total, curr) => {
         return total += ROMAN_NUMERAL[curr];
       }, 0);
@@ -40,6 +39,32 @@ class NumeralsService {
     }
 
     return numeral;
+  }
+
+  async getRomanNumeral({ inputValue }: Params): Promise<Numeral> {
+    const numeral = await NumeralModel.findOne({ arabic: inputValue });
+
+    if (!numeral) {
+      const arabic = Number(inputValue);
+      const roman = this.convertToRoman(arabic);
+
+      const newNumeral = new NumeralModel({ roman, arabic });
+      return await newNumeral.save();
+    }
+
+    return numeral;
+  }
+
+  convertToRoman(arabic: number) {
+    let roman = '';
+
+    for (const key of Object.keys(ROMAN_NUMERAL)) {
+      const value = Math.floor(arabic / ROMAN_NUMERAL[key]);
+      arabic -= value * ROMAN_NUMERAL[key];
+      roman += key.repeat(value);
+    }
+
+    return roman;
   }
 
 }
