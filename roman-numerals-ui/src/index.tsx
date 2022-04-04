@@ -1,5 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+import { StylesProvider } from '@material-ui/core/styles';
 
 import './index.scss';
 import App from './App';
@@ -8,7 +9,9 @@ import reportWebVitals from './reportWebVitals';
 const root = createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <StylesProvider injectFirst>
+      <App />
+    </StylesProvider>
   </React.StrictMode>
 );
 

@@ -1,0 +1,31 @@
+.numeral-converter {
+  display: flex;
+  flex-direction: column;
+
+  &__input {
+    input {
+      text-transform: uppercase;
+    }
+  }
+
+  &__group {
+    display: flex;
+    align-items: center;
+  }
+
+  &__toggle {
+    margin-left: 25px;
+  }
+
+  &__result {
+    display: flex;
+    flex-direction: column;
+    text-transform: uppercase;
+
+    > span {
+      &:last-child {
+        font-size: 50px;
+      }
+    }
+  }
+}
