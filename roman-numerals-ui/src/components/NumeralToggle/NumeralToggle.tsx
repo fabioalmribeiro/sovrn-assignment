@@ -1,11 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useState } from 'react';
 import { Switch } from '@mui/material';
 
 import './NumeralToggle.scss';
-import AppContext from 'src/App.context';
 
 function NumeralToggle() {
-  const { type, setType } = useContext(AppContext);
+  const [type, setType] = useState('');
   const onUpdateMode = (e: React.ChangeEvent<HTMLInputElement>, checked: boolean) => {
     setType(checked ? 'arabic' : 'roman');
   };
@@ -19,6 +18,8 @@ function NumeralToggle() {
         onChange={ onUpdateMode }
       />
       <span className="numeral-toggle__label">Arabic</span>
+
+
     </div>
   );
 }
