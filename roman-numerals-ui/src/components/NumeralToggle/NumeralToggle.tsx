@@ -5,9 +5,9 @@ import './NumeralToggle.scss';
 import AppContext from 'src/App.context';
 
 function NumeralToggle() {
-  const { mode, setMode } = useContext(AppContext);
+  const { type, setType } = useContext(AppContext);
   const onUpdateMode = (e: React.ChangeEvent<HTMLInputElement>, checked: boolean) => {
-    setMode(checked ? 'arabic' : 'roman');
+    setType(checked ? 'arabic' : 'roman');
   };
 
   return (
@@ -15,7 +15,7 @@ function NumeralToggle() {
       <span className="numeral-toggle__label">Roman</span>
       <Switch
         className="numeral-toggle__switch"
-        checked={ mode === 'arabic' }
+        checked={ type === 'arabic' }
         onChange={ onUpdateMode }
       />
       <span className="numeral-toggle__label">Arabic</span>

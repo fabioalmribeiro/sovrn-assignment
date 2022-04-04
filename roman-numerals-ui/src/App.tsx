@@ -6,9 +6,9 @@ import './App.scss';
 import NumeralToggle from './components/NumeralToggle/NumeralToggle';
 
 function App() {
-  const [mode, setMode] = useState<AppContextProps['mode']>('roman');
+  const [type, setType] = useState<AppContextProps['type']>('roman');
 
-  const context = { mode, setMode };
+  const context = { type, setType };
 
   return (
     <AppContext.Provider value={ context }>

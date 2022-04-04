@@ -1,13 +1,13 @@
 import React from 'react';
 
 export interface AppContextProps {
-  mode: 'roman' | 'arabic',
-  setMode: Function
+  type: 'roman' | 'arabic',
+  setType: Function
 }
 
 const AppContext = React.createContext<Partial<AppContextProps>>({
-  mode: 'roman',
-  setMode: () => {}
+  type: 'roman',
+  setType: () => {}
 });
 
 export default AppContext;
