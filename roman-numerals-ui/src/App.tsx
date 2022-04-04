@@ -3,6 +3,7 @@ import { useState } from 'react';
 import AppContext, { AppContextProps } from './App.context';
 
 import './App.scss';
+import NumeralToggle from './components/NumeralToggle/NumeralToggle';
 
 function App() {
   const [mode, setMode] = useState<AppContextProps['mode']>('roman');
@@ -13,6 +14,8 @@ function App() {
     <AppContext.Provider value={ context }>
       <div className="app">
         <h1>Roman Numerals Converter</h1>
+
+        <NumeralToggle />
 
       </div>
     </AppContext.Provider>
