@@ -1,4 +1,4 @@
-Roman Numbers API
+Roman Numerals API
 ===
 
 Requirements
