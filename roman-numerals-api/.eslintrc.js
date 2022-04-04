@@ -28,7 +28,6 @@ module.exports = {
     'comma-spacing': ['error', { 'before': false, 'after': true }],
     'eol-last': ['error', 'always'],
     'indent': ['error', 2, { 'MemberExpression': 1, 'SwitchCase': 1 }],
-    'no-multiple-empty-lines': ['error'],
     'no-new-symbol': 'error',
     'no-trailing-spaces': ['error'],
     'no-undef': ['error'],

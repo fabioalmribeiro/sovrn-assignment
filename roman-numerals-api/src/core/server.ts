@@ -22,8 +22,10 @@ class Server {
     this.app = express();
     this.routes = [];
 
-    this.initDB();
-    this.config();
+    if (!process.env.JEST_WORKER_ID) {
+      this.initDB();
+      this.config();
+    }
   }
 
   private initDB(): void {
