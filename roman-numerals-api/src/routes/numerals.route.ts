@@ -55,7 +55,7 @@ class NumeralsRoute {
     try {
       const response = await this.numbersService.getRomanNumeral(req.params);
 
-      createResponse(res, 200, 'ROMAN_NUMERAL', null, { inputValue: response.roman, convertedValue: response.arabic });
+      createResponse(res, 200, 'ROMAN_NUMERAL', null, { inputValue: response.arabic, convertedValue: response.roman });
     } catch (e) {
       Logger.log('error', 'NumeralsRoute ~ getRoman catch', e);
       next(createError());
