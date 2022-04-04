@@ -1,25 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
+import { useState } from 'react';
+import AppContext, { AppContextProps } from './App.context';
+
 import './App.scss';
 
 function App() {
+  const [mode, setMode] = useState<AppContextProps['mode']>('roman');
+
+  const context = { mode, setMode };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={ logo } className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContext.Provider value={ context }>
+      <div className="app">
+        <h1>Roman Numerals Converter</h1>
+
+      </div>
+    </AppContext.Provider>
   );
 }
 
