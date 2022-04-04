@@ -1,4 +1,16 @@
 services:
+  ui:
+    build: ./roman-numerals-ui
+    image: ui
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./roman-numerals-ui:/ui
+      - /ui/node_modules
+    networks:
+      - webappnetwork
+
   api:
     build: ./roman-numerals-api
     image: api

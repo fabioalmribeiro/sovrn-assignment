@@ -1,4 +1,4 @@
-# Use a lighter version of Node as a parent image
+# Use version 14 of Node as a parent image
 FROM node:14-alpine
 
 # Set the working directory to /api
