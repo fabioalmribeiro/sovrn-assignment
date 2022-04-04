@@ -1,26 +1,46 @@
 {
   "compilerOptions": {
-    "target": "es5",
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
     "allowJs": true,
+    "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "outDir": "dist",
+    "rootDir": ".",
+    "experimentalDecorators": true,
+    "module": "esnext",
+    "noImplicitAny": false,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "strictNullChecks": false,
+    "sourceMap": true,
+    "pretty": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "declaration": true,
+    "target": "es6",
+    "baseUrl": "./",
+    "noFallthroughCasesInSwitch": true
   },
   "include": [
-    "src"
+    "./src/**/*.ts",
+    "./src/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "./src/**/*.spec.ts",
+    "./src/**/*.spec.tsx",
+    "./src/**/*.spec.tsx.snap"
   ]
 }
