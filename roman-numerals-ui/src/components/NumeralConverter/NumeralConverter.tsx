@@ -14,8 +14,6 @@ function NumeralConverter() {
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [fromRoman, setFromRoman] = useState<boolean>(true);
 
-  //#region - METHODS -
-
   const debouncedOnChange = useCallback(_.debounce(async (value: string) => {
     if (value === '') return;
 
@@ -45,15 +43,9 @@ function NumeralConverter() {
     setFromRoman(!fromRoman);
   };
 
-  //#endregion
-
-  //#region - EFFECTS -
-
   useEffect(() => {
     triggerDebounce(value);
   }, [fromRoman]);
-
-  //#endregion
 
   return (
     <div className="numeral-converter">
