@@ -33,7 +33,7 @@ class NumeralsRoute {
     try {
       const response = await this.numbersService.getAllNumeralsList();
 
-      createResponse(res, 200, 'NUMBERS_LIST', null, _.map(response, r => ({ inputValue: r.roman, convertedValue: r.arabic })));
+      createResponse(res, 200, 'NUMBERS_LIST', null, _.map(response, r => ({ roman: r.roman, arabic: r.arabic })));
     } catch (e) {
       Logger.log('error', 'NumeralsRoute ~ getAll catch', e);
       next(createError());
