@@ -58,6 +58,7 @@ function NumeralConverter() {
           onChange={ onUpdateValue }
           error={ errorMessage !== '' }
           helperText={ errorMessage || ' ' }
+          data-testid="value-input"
         />
 
         <div className="numeral-converter__toggle">
@@ -68,8 +69,9 @@ function NumeralConverter() {
             value={ fromRoman ? 'Roman' : 'Arabic' }
             disabled
             helperText={ ' ' }
+            data-testid="label"
           />
-          <IconButton onClick={ onUpdateType }>
+          <IconButton onClick={ onUpdateType } data-testid="swap-button">
             <SwapHorizIcon />
           </IconButton>
           <TextField
@@ -79,13 +81,14 @@ function NumeralConverter() {
             value={ fromRoman ? 'Arabic' : 'Roman' }
             disabled
             helperText={ ' ' }
+            data-testid="label"
           />
         </div>
       </div>
 
       {
         value !== '' && result !== '' && (
-          <div className="numeral-converter__result">
+          <div className="numeral-converter__result" data-testid="result">
             <span>{ `${ value } =` }</span>
             <span>{ result }</span>
           </div>
