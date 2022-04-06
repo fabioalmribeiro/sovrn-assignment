@@ -90,7 +90,7 @@ class NumeralsRoute {
   }
 
   verifyArabicNumeral(req: Request, res: Response, next: NextFunction): void {
-    if (_.isNaN(Number(req.params.inputValue))) {
+    if (_.isNaN(Number(req.params.inputValue)) || req.params.inputValue === '0') {
       Logger.log('error', 'NumeralsRoute ~ verifyArabicNumeral');
       next(createError(errors.not_valid));
       return;
