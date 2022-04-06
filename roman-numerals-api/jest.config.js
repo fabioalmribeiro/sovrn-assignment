@@ -11,6 +11,8 @@ module.exports = {
     '!src/**/server.ts',
     '!src/**/logger.ts',
     '!src/interfaces/*.ts',
+    '!src/models/*.ts',
+    '!src/utils/*.ts',
     '!src/**/*.d.ts',
     '!src/index.ts'
   ],

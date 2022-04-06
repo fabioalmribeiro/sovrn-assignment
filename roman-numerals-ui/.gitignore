@@ -5,6 +5,8 @@
 ### dotenv ###
 .env
 
+coverage
+
 ### macOS ###
 # General
 .DS_Store
