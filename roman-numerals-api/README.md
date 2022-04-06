@@ -12,4 +12,6 @@ You're going to need to create a .env file in this project's root with this conf
 APP_VERSION=v1
 APP_LISTEN_PORT=3600
 APP_ENV=local
+APP_LOGS_DIR=./logs
+APP_DB_PATH=mongodb://mongodb:27017/sovrn
 ```
