@@ -8,6 +8,7 @@
     "build": "tsc --project tsconfig.build.json",
     "test": "jest --setupFiles dotenv/config --watchAll=false",
     "test-watch": "jest --setupFiles dotenv/config --watchAll",
+    "test-coverage": "jest --config ./jest.config.js --coverage",
     "lint": "eslint --ext .ts src/",
     "lint-fix": "eslint --fix --ext .ts src/"
   },
