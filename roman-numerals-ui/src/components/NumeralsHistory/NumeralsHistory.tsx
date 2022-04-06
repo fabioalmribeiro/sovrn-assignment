@@ -32,7 +32,7 @@ function NumeralsHistory() {
     const getList = async () => {
       const response = await numeralsAPI.get(apiUrls.allNumerals);
 
-      if (response.status === 200 && response.data.results) {
+      if (response && response.status === 200 && response.data.results) {
         setRows(response.data.results);
       }
     };
@@ -42,7 +42,7 @@ function NumeralsHistory() {
 
   return (
     <div className="numerals-list">
-      <Table className="numerals-list__table">
+      <Table className="numerals-list__table" data-testid="table">
         <TableHead>
           <TableRow>
             <TableCell align="center">Roman</TableCell>
@@ -52,7 +52,7 @@ function NumeralsHistory() {
         <TableBody>
           {
             _.map(rows, (row) => (
-              <TableRow key={ row.roman }>
+              <TableRow key={ row.roman } data-testid="item-row">
                 <TableCell align="center">{ row.roman }</TableCell>
                 <TableCell align="center">{ row.arabic }</TableCell>
               </TableRow>
@@ -62,10 +62,10 @@ function NumeralsHistory() {
       </Table>
 
       <div className="numerals-list__actions">
-        <IconButton title="Refresh List" onClick={ onRefreshList }>
+        <IconButton title="Refresh List" onClick={ onRefreshList } data-testid="refresh-btn">
           <CachedIcon />
         </IconButton>
-        <IconButton title="Clear List" onClick={ onDeleteList }>
+        <IconButton title="Clear List" onClick={ onDeleteList } data-testid="delete-btn">
           <DeleteIcon />
         </IconButton>
       </div>

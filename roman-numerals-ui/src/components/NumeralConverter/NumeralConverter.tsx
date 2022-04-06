@@ -19,7 +19,7 @@ function NumeralConverter() {
 
     try {
       const response = await numeralsAPI.get(replaceUrl(apiUrls.numeral, { type: fromRoman ? 'arabic' : 'roman', inputValue: _.upperCase(value) }));
-      if (response.status === 200 && response.data.results) {
+      if (response && response.status === 200 && response.data.results) {
         setResult(response.data.results.convertedValue);
         setErrorMessage('');
       }
