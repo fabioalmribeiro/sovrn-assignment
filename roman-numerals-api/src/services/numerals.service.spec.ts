@@ -25,6 +25,30 @@ describe('Numerals Service', () => {
     expect(roman).toEqual('XI');
   });
 
+  test('convertToRoman should return IV (edge case)', () => {
+    expect.assertions(1);
+
+    const roman = service.convertToRoman(4);
+
+    expect(roman).toEqual('IV');
+  });
+
+  test('convertToRoman should return IX (edge case)', () => {
+    expect.assertions(1);
+
+    const roman = service.convertToRoman(9);
+
+    expect(roman).toEqual('IX');
+  });
+
+  test('convertToRoman should return XL (edge case)', () => {
+    expect.assertions(1);
+
+    const roman = service.convertToRoman(40);
+
+    expect(roman).toEqual('XL');
+  });
+
   test('getAllNumeralsList should return an array of numerals', async () => {
     expect.assertions(2);
 
