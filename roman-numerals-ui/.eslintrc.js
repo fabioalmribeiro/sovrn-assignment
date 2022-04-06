@@ -2,10 +2,12 @@ module.exports = {
   'env': {
     'node': true,
     'browser': true,
-    'es6': true
+    'es6': true,
+    'jest/globals': true
   },
   'extends': [
     'eslint:recommended',
+    'plugin:jest/recommended',
     'plugin:react/recommended'
   ],
   'globals': {
@@ -23,6 +25,7 @@ module.exports = {
   'plugins': [
     'react',
     'react-hooks',
+    'jest',
     '@typescript-eslint'
   ],
   'rules': {

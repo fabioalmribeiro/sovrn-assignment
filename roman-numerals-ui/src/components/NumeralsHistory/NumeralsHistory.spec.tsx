@@ -43,5 +43,5 @@ test('render 1 row on mount', async () => {
   const itemEls = await screen.findByTestId('item-row');
   const tds = itemEls.querySelectorAll('td');
   expect(tds[0]).toHaveTextContent('X');
-  expect(tds[1]).toHaveTextContent(10);
+  expect(tds[1]).toHaveTextContent(/10/i);
 });

@@ -5,7 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "start": "nodemon -L -r dotenv/config src/index.ts",
-    "build": "tsc",
+    "build": "tsc --project tsconfig.build.json",
     "test": "jest --setupFiles dotenv/config --watchAll=false",
     "test-watch": "jest --setupFiles dotenv/config --watchAll",
     "lint": "eslint --ext .ts src/",
@@ -34,6 +34,7 @@
     "@types/jest": "^27.4.1",
     "@types/lodash": "^4.14.181",
     "@types/morgan": "^1.9.3",
+    "@types/node": "^17.0.23",
     "@typescript-eslint/eslint-plugin": "^5.17.0",
     "@typescript-eslint/parser": "^5.17.0",
     "eslint": "^8.12.0",

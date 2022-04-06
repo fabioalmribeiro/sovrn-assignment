@@ -34,13 +34,13 @@
   },
   "include": [
     "./src/**/*.ts",
-    "./src/**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
+    "./src/**/*.tsx",
     "./src/**/*.spec.ts",
     "./src/**/*.spec.tsx",
     "./src/**/*.spec.tsx.snap"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
   ]
 }

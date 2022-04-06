@@ -1,5 +1,3 @@
-import { describe, beforeAll, expect, test } from '@jest/globals';
-
 import NumeralsService from './numerals.service';
 
 describe('Numerals Service', () => {
