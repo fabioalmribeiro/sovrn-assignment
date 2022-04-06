@@ -17,7 +17,7 @@ const ROMAN_NUMERAL = {
 class NumeralsService {
 
   async getAllNumeralsList(): Promise<Numeral[]> {
-    return await NumeralModel.find({}).sort({ createdAt: -1 });
+    return await NumeralModel.find({});
   }
 
   async getArabicNumeral({ inputValue }: Params): Promise<Numeral> {
