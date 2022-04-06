@@ -49,6 +49,14 @@ describe('Numerals Service', () => {
     expect(roman).toEqual('XL');
   });
 
+  test('convertToArabic should return 4', () => {
+    expect.assertions(1);
+
+    const roman = service.convertToArabic('IV');
+
+    expect(roman).toEqual(4);
+  });
+
   test('getAllNumeralsList should return an array of numerals', async () => {
     expect.assertions(2);
 
@@ -95,7 +103,7 @@ describe('Numerals Service', () => {
     expect(numeral).toEqual({ roman: 'X', arabic: 10 });
   });
 
-  test('getRomanNumeral should return new 11', async () => {
+  test('getRomanNumeral should return new XI', async () => {
     expect.assertions(3);
 
     mockedModel.findOne.mockResolvedValue(null);
@@ -107,7 +115,6 @@ describe('Numerals Service', () => {
     expect(mockedModel.prototype.save).toHaveBeenCalledTimes(1);
     expect(numeral).toEqual({ roman: 'XI', arabic: 11 });
   });
-
   test('removeAllNumerals should return count of deleted rows', async () => {
     expect.assertions(2);
 

@@ -30,9 +30,7 @@ class NumeralsService {
     const numeral = await NumeralModel.findOne({ roman: inputValue });
 
     if (!numeral) {
-      const arabic = _.reduce(inputValue, (total, curr) => {
-        return total += ROMAN_NUMERAL[curr];
-      }, 0);
+      const arabic = this.convertToArabic(inputValue);
 
       const newNumeral = new NumeralModel({
         roman: inputValue,
@@ -73,6 +71,16 @@ class NumeralsService {
     }
 
     return roman;
+  }
+
+  convertToArabic(roman: string) {
+    return _.reduce(roman, (total: number, curr: string, index: number, value: string) => {
+      if (ROMAN_NUMERAL[value[index + 1]] > ROMAN_NUMERAL[curr]) {
+        return total -= ROMAN_NUMERAL[curr];
+      } else {
+        return total += ROMAN_NUMERAL[curr];
+      }
+    }, 0);
   }
 
 }
