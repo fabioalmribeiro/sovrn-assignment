@@ -53,9 +53,8 @@ class NumeralsService {
     return numeral;
   }
 
-  async removeAllNumerals(): Promise<void> {
-    await NumeralModel.deleteMany();
-    return;
+  async removeAllNumerals(): Promise<{ deletedCount: number }> {
+    return await NumeralModel.deleteMany();
   }
 
   convertToRoman(arabic: number) {

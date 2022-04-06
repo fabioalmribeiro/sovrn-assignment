@@ -64,9 +64,9 @@ class NumeralsRoute {
 
   async removeAll(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      await this.numbersService.removeAllNumerals();
+      const response = await this.numbersService.removeAllNumerals();
 
-      createResponse(res, 200, 'NUMBERS_REMOVED', null, []);
+      createResponse(res, 200, 'NUMBERS_REMOVED', null, { deletedRecords: response.deletedCount });
     } catch (e) {
       Logger.log('error', 'NumeralsRoute ~ getAll catch', e);
       next(createError());
